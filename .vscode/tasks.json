@@ -1,0 +1,33 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "group":{
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher":"$gcc",
+            "command": "g++",
+            "args": [
+                "-g", "*.cpp",
+                "-o", "${workspaceRoot}/Builds/${workspaceFolderBasename}.exe",
+                "-static",
+                "-static-libgcc",
+                "-static-libstdc++",
+                "-IC:/CODE/DEPS/glfw-3.2.1/include",
+                "-LC:/CODE/DEPS/glfw-3.2.1/lib-mingw-w64",
+                "-IC:/CODE/DEPS/glew-2.1.0/include",
+                "-LC:/CODE/DEPS/glew-2.1.0/lib",
+                "-IC:/CODE/DEPS/glm-0.9.9.3/include",
+                "-lglew32",
+                "-lglfw3",
+                "-lopengl32",
+                "-lglu32",
+                "-lgdi32"
+            ]
+        }
+    ]
+}
