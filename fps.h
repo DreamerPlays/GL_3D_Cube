@@ -6,11 +6,13 @@ class fps {
 private:
   double firstTime;
   int frameCount;
+  double lastTime;
     
 public:
-  fps(double);
+  double dt;
+  double passedT;
+  void resetTimer();
+  void frame();
+  fps();
   ~fps();
-  int getFPS(double);
-  void countFrame();
-  double getCurrentDT(double);
 };

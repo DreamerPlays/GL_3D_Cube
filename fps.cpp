@@ -1,26 +1,21 @@
 #include "fps.h"
+#include "GLFW/glfw3.h"
 
-fps::fps(double start) {
-  fps::firstTime = start;
-  fps::frameCount = 0;
-}
-
-int fps::getFPS(double currentTime) {
-  double dt = currentTime - fps::firstTime;
-  fps::firstTime = currentTime;
-  double fps = (fps::frameCount/dt);
-  fps::frameCount = 0;
-  return round(fps);
-}
-
-void fps::countFrame() {
-  fps::frameCount = fps::frameCount + 1;
-}
-
-double fps::getCurrentDT(double currentTime) {
-  double dt = currentTime - fps::firstTime;
-  return dt;
+fps::fps() {
+  fps::firstTime = glfwGetTime();
 }
 
 fps::~fps() {
+}
+
+void fps::frame() {
+  double time = glfwGetTime();
+  fps::dt = time - fps::lastTime;
+  fps::lastTime = time;
+  fps::passedT = time - fps::firstTime;
+}
+
+void fps::resetTimer() {
+  fps::firstTime = glfwGetTime();
+  fps::passedT = 0;
 }
