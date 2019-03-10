@@ -1,18 +1,19 @@
 #include <iostream>
 #include <math.h>
+#include <chrono>
 
 class fps {
 
 private:
-  double firstTime;
-  int frameCount;
-  double lastTime;
+  std::chrono::_V2::high_resolution_clock::time_point stopT;
+  std::chrono::_V2::high_resolution_clock::time_point startT;
+  std::chrono::high_resolution_clock timer;
     
 public:
   double dt;
-  double passedT;
-  void resetTimer();
-  void frame();
+  void calcDt();
   fps();
+  void start();
+  void stop();
   ~fps();
 };
